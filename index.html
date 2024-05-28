@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Jakuba Hyziaka</title>
+    <meta name="description" content="Portfolio Jakuba Hyziaka, studenta cyberbezpieczeństwa. Zobacz moje projekty i osiągnięcia.">
+    <meta name="keywords" content="Jakub Hyziak, cyberbezpieczeństwo, projekty, IT, technologia">
+    <meta name="author" content="Jakub Hyziak">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/preline@1.6.0/dist/preline.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-indigo-800 py-10">
+        <div class="container mx-auto text-center">
+            <img src="https://avatars.githubusercontent.com/u/42213414?v=4" alt="Jakub Hyziak" class="rounded-full w-32 mx-auto mb-4">
+            <h1 id="main-title" class="text-4xl font-bold text-white">Jakub Hyziak</h1>
+            <p id="main-subtitle" class="text-xl mt-2 text-indigo-200">Student Cyberbezpieczeństwa</p>
+        </div>
+    </header>
+    <nav class="bg-indigo-600">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a id="nav-brand" class="text-white text-2xl font-bold" href="#">Portfolio</a>
+                <ul class="flex space-x-4">
+                    <li><a id="nav-about" class="text-white hover:text-gray-300" href="#about">O mnie</a></li>
+                    <li><a id="nav-projects" class="text-white hover:text-gray-300" href="#projects">Projekty</a></li>
+                    <li><a id="nav-education" class="text-white hover:text-gray-300" href="#education">Edukacja</a></li>
+                    <li><a id="nav-contact" class="text-white hover:text-gray-300" href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto my-10 px-4">
+        <section id="about" class="mb-12">
+            <h2 id="about-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">O mnie</h2>
+            <div class="max-w-2xl mx-auto text-center">
+                <p id="about-text">Jestem studentem cyberbezpieczeństwa na Wyższej Szkole Kształcenia Zawodowego, gdzie uczę się jak chronić systemy komputerowe przed zagrożeniami. Skończyłem informatykę w technikum Teb Edukacja, gdzie zdobyłem solidne podstawy w programowaniu i zarządzaniu systemami.</p>
+                <p id="about-text-2" class="mt-4">Aktualnie poszerzam swoje umiejętności, realizując kurs Google Cybersecurity Professional Certificate oraz posiadając certyfikat CISCO IT Essentials. Interesuję się technologiami związanymi z bezpieczeństwem informacji, analityką sieciową oraz rozwojem oprogramowania.</p>
+            </div>
+        </section>
+        <section id="projects" class="mb-12">
+            <h2 id="projects-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Projekty</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+                    <h3 id="project-1-title" class="text-2xl font-bold mb-2 text-indigo-800">Study Tools</h3>
+                    <p id="project-1-desc" class="mt-2">Platforma do zarządzania narzędziami do nauki, wspierająca efektywne kształcenie.</p>
+                    <a href="https://studytools.xyz/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
+                        </svg>
+                        <span id="project-1-btn">Zobacz Projekt</span>
+                    </a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+                    <h3 id="project-2-title" class="text-2xl font-bold mb-2 text-indigo-800">Stay Focused</h3>
+                    <p id="project-2-desc" class="mt-2">Aplikacja do zarządzania czasem i koncentracją, pomagająca w osiąganiu celów.</p>
+                    <a href="https://jacob22092.github.io/Stay-Focused/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
+                        </svg>
+                        <span id="project-2-btn">Zobacz Projekt</span>
+                    </a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+                    <h3 id="project-3-title" class="text-2xl font-bold mb-2 text-indigo-800">OCR App 2.0</h3>
+                    <p id="project-3-desc" class="mt-2">Aplikacja do optycznego rozpoznawania znaków, ułatwiająca digitalizację dokumentów.</p>
+                    <a href="https://jacob22092.github.io/OCR-App-2.0/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
+                        </svg>
+                        <span id="project-3-btn">Zobacz Projekt</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="education" class="mb-12">
+            <h2 id="education-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Edukacja</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
+                    <h3 id="education-1-title" class="text-2xl font-bold text-indigo-800">Wyższa Szkoła Kształcenia Zawodowego</h3>
+                    <p id="education-1-desc" class="mt-2">Kierunek: Cyberbezpieczeństwo</p>
+                    <p class="mt-1 text-gray-600">Data ukończenia: 2027</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 id="education-2-title" class="text-2xl font-bold text-indigo-800">Technikum Teb Edukacja</h3>
+                    <p id="education-2-desc" class="mt-2">Kierunek: Informatyka</p>
+                    <p class="mt-1 text-gray-600">Data ukończenia: 2021</p>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="mb-12">
+            <h2 id="contact-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Kontakt</h2>
+            <ul class="flex justify-center space-x-4">
+                <li><a id="contact-linkedin" href="https://www.linkedin.com/in/jakub-hyziak-a58193221/" target="_blank" class="btn bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg">LinkedIn</a></li>
+                <li><a id="contact-github" href="https://github.com/Jacob22092" target="_blank" class="btn bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg">GitHub</a></li>
+                <li><a id="contact-twitter" href="https://x.com/JakubHyziak1" target="_blank" class="btn bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-lg">Twitter</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="text-center bg-indigo-800 py-4 text-white">
+        <p>&copy; 2024 Jakub Hyziak</p>
+    </footer>
+    <script src="https://unpkg.com/preline@1.6.0/dist/preline.js"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Jacob22092" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
