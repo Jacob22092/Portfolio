@@ -1,112 +1,234 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Jakub Hyziak</title>
-    <meta name="description" content="Portfolio Jakuba Hyziaka, studenta cyberbezpieczeństwa. Zobacz moje projekty i osiągnięcia.">
-    <meta name="keywords" content="Jakub Hyziak, cyberbezpieczeństwo, projekty, IT, technologia">
-    <meta name="author" content="Jakub Hyziak">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/preline@1.6.0/dist/preline.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.png">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jakub Hyziak — Portfolio</title>
+  <meta name="description" content="Portfolio Jakuba Hyziaka, IT Help Desk Specialist. Wsparcie IT, cyberbezpieczeństwo, automatyzacja, nowoczesne projekty.">
+  <meta name="author" content="Jakub Hyziak">
+  <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-indigo-800 py-10">
-        <div class="container mx-auto text-center">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQHOyPVV5a6NRw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1728677104731?e=1734566400&v=beta&t=jvqBXYAslFP6Eu3NDYGxb8H0-LwanUHxidQPuvCeDM0" alt="Jakub Hyziak" class="rounded-full w-32 mx-auto mb-4">
-            <h1 id="main-title" class="text-4xl font-bold text-white">Jakub Hyziak</h1>
-            <p id="main-subtitle" class="text-xl mt-2 text-indigo-200">Student Cyberbezpieczeństwa</p>
+<body>
+  <header class="main-header gradient-bg">
+    <div class="header-content">
+      <div class="avatar-glow">
+        <img src="https://avatars.githubusercontent.com/u/42213414?v=4" alt="Jakub Hyziak" class="avatar">
+      </div>
+      <div class="header-texts">
+        <h1 class="hero-title">Jakub Hyziak</h1>
+        <div class="hero-subtitle">
+          <span class="position">IT Help Desk Specialist</span>
+          <span class="localisation">Kraków · Pełny etat · Hybrydowo</span>
         </div>
-    </header>
-    <nav class="bg-indigo-600">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <a id="nav-brand" class="text-white text-2xl font-bold" href="#">Portfolio</a>
-                <ul class="flex space-x-4">
-                    <li><a id="nav-about" class="text-white hover:text-gray-300" href="#about">O mnie</a></li>
-                    <li><a id="nav-projects" class="text-white hover:text-gray-300" href="#projects">Projekty</a></li>
-                    <li><a id="nav-education" class="text-white hover:text-gray-300" href="#education">Edukacja</a></li>
-                    <li><a id="nav-contact" class="text-white hover:text-gray-300" href="#contact">Kontakt</a></li>
-                </ul>
-            </div>
-        </div>
+      </div>
+      <button id="theme-toggle" aria-label="Przełącz motyw" title="Tryb jasny/ciemny"><span class="theme-icon">🌙</span></button>
+    </div>
+    <nav class="main-nav desktop-nav">
+      <a href="#about">O mnie</a>
+      <a href="#experience">Doświadczenie</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#projects">Projekty</a>
+      <a href="#education">Edukacja</a>
+      <a href="#whyme">Kompetencje</a>
+      <a href="#contact">Kontakt</a>
     </nav>
-    <main class="container mx-auto my-10 px-4">
-        <section id="about" class="mb-12">
-            <h2 id="about-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">O mnie</h2>
-            <div class="max-w-2xl mx-auto text-center">
-                <p id="about-text">Jestem studentem cyberbezpieczeństwa na Wyższej Szkole Kształcenia Zawodowego, gdzie uczę się jak chronić systemy komputerowe przed zagrożeniami. Skończyłem informatykę w technikum Teb Edukacja, gdzie zdobyłem solidne podstawy w programowaniu i zarządzaniu systemami.</p>
-                <p id="about-text-2" class="mt-4">Aktualnie poszerzam swoje umiejętności, realizując kurs Google Cybersecurity Professional Certificate oraz posiadając certyfikat CISCO IT Essentials. Interesuję się technologiami związanymi z bezpieczeństwem informacji, analityką sieciową oraz rozwojem oprogramowania.</p>
-            </div>
-        </section>
-        <section id="projects" class="mb-12">
-            <h2 id="projects-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Projekty</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
-                    <h3 id="project-1-title" class="text-2xl font-bold mb-2 text-indigo-800">Study Tools</h3>
-                    <p id="project-1-desc" class="mt-2">Platforma do zarządzania narzędziami do nauki, wspierająca efektywne kształcenie.</p>
-                    <a href="https://studytools.xyz/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
-                        </svg>
-                        <span id="project-1-btn">Zobacz Projekt</span>
-                    </a>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
-                    <h3 id="project-2-title" class="text-2xl font-bold mb-2 text-indigo-800">Stay Focused</h3>
-                    <p id="project-2-desc" class="mt-2">Aplikacja do zarządzania czasem i koncentracją, pomagająca w osiąganiu celów.</p>
-                    <a href="https://jacob22092.github.io/Stay-Focused/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
-                        </svg>
-                        <span id="project-2-btn">Zobacz Projekt</span>
-                    </a>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
-                    <h3 id="project-3-title" class="text-2xl font-bold mb-2 text-indigo-800">OCR App 2.0</h3>
-                    <p id="project-3-desc" class="mt-2">Aplikacja do optycznego rozpoznawania znaków, ułatwiająca digitalizację dokumentów.</p>
-                    <a href="https://jacob22092.github.io/OCR-App-2.0/" target="_blank" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L7 18.414l-6.707.707.707-6.707L12.293 2.293zM5 16h1v1H5v-1z"></path>
-                        </svg>
-                        <span id="project-3-btn">Zobacz Projekt</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section id="education" class="mb-12">
-            <h2 id="education-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Edukacja</h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
-                    <h3 id="education-1-title" class="text-2xl font-bold text-indigo-800">Wyższa Szkoła Kształcenia Zawodowego</h3>
-                    <p id="education-1-desc" class="mt-2">Kierunek: Cyberbezpieczeństwo</p>
-                    <p class="mt-1 text-gray-600">Data ukończenia: 2027</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 id="education-2-title" class="text-2xl font-bold text-indigo-800">Technikum Teb Edukacja</h3>
-                    <p id="education-2-desc" class="mt-2">Kierunek: Informatyka</p>
-                    <p class="mt-1 text-gray-600">Data ukończenia: 2021</p>
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="mb-12">
-            <h2 id="contact-title" class="text-center text-3xl font-bold mb-6 text-indigo-800">Kontakt</h2>
-            <ul class="flex justify-center space-x-4">
-                <li><a id="contact-linkedin" href="https://www.linkedin.com/in/jakub-hyziak-a58193221/" target="_blank" class="btn bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg">LinkedIn</a></li>
-                <li><a id="contact-github" href="https://github.com/Jacob22092" target="_blank" class="btn bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-lg">GitHub</a></li>
-                <li><a id="contact-twitter" href="https://x.com/JakubHyziak1" target="_blank" class="btn bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded-lg">Twitter</a></li>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="section section-glass fade-in">
+      <h2>O mnie</h2>
+      <div class="about-flex">
+        <p>
+          Jestem specjalistą IT z praktycznym podejściem do wsparcia użytkowników, zarządzania infrastrukturą i cyberbezpieczeństwa. W <b>KiM Group</b> odpowiadam za bieżące wsparcie techniczne, rozwój infrastruktury, automatyzację procesów i wdrażanie realnych usprawnień.<br><br>
+          Cenię odpowiedzialność, partnerską współpracę i ciągłe poszerzanie kompetencji technicznych.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section section-glass fade-in">
+      <h2>Doświadczenie zawodowe</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <img src="https://media.licdn.com/dms/image/v2/C4E0BAQEC2UPoF90RRw/company-logo_200_200/company-logo_200_200/0/1631308373304?e=2147483647&v=beta&t=B3n-qv0AgpRKEv9kSyVaKJcFGyttcyxeHYrHPeeBTFA" alt="KiM Group logo" loading="lazy">
+          </div>
+          <div class="timeline-content">
+            <span class="exp-title"><strong>IT Help Desk Specialist</strong> — KiM Group</span>
+            <span class="exp-date">paź 2024 – obecnie</span>
+            <ul class="exp-tasks">
+              <li>Kompleksowe wsparcie techniczne użytkowników (stacjonarnie i zdalnie)</li>
+              <li>Konfiguracja, aktualizacje i zabezpieczenia komputerów oraz sieci firmowej</li>
+              <li>Automatyzacja rutynowych procesów i monitorowanie infrastruktury IT</li>
+              <li>Wirtualizacja środowisk (VMware, Proxmox), obsługa VPS, RDP</li>
+              <li>Modernizacja sprzętu, wdrażanie nowych rozwiązań, dokumentacja techniczna</li>
+              <li>Współpraca z zespołem IT i szkolenie pracowników</li>
             </ul>
-        </section>
-    </main>
-    <footer class="text-center bg-indigo-800 py-4 text-white">
-        <p>&copy; 2024 Jakub Hyziak</p>
-    </footer>
-    <script src="https://unpkg.com/preline@1.6.0/dist/preline.js"></script>
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Jacob22092" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-    <script src="script.js" defer></script>
+            <span class="exp-sub">Stanowiska: <b>IT Help Desk</b> (2025–obecnie), <b>Help Desk Support Specialist</b> (2024–2025)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" class="section section-glass fade-in">
+      <h2>Tech Stack</h2>
+      <div class="stack-list">
+        <div class="stack-row">
+          <span class="stack-pill">🖥️ Windows Server</span>
+          <span class="stack-desc">Administracja, automatyzacja, zarządzanie użytkownikami</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">☁️ VMware / Proxmox</span>
+          <span class="stack-desc">Wirtualizacja, backup, elastyczność środowisk</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">🛡️ Active Directory</span>
+          <span class="stack-desc">Uprawnienia, polityki, bezpieczeństwo organizacji</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">📧 Office 365</span>
+          <span class="stack-desc">Mail, licencje, wsparcie użytkowników</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">🐍 Python / Bash</span>
+          <span class="stack-desc">Automatyzacja, skrypty, integracje</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">🔗 Git</span>
+          <span class="stack-desc">Wersjonowanie, współpraca zespołowa</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">🎧 Service Desk</span>
+          <span class="stack-desc">Obsługa zgłoszeń, komunikacja, rozwiązywanie problemów</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-pill">🔒 Network Security</span>
+          <span class="stack-desc">Firewall, VPN, monitoring, polityki bezpieczeństwa</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section fade-in">
+      <h2>Wybrane projekty</h2>
+      <div class="projects-grid">
+        <div class="project-card glass" tabindex="0">
+          <div class="project-thumb" style="background:linear-gradient(100deg,#a18cd1,#fbc2eb);"><span>Study Tools</span></div>
+          <div class="project-info">
+            <p>Platforma do zarządzania nauką i notatkami. React, Firebase, responsywny design.</p>
+            <a href="https://studytools.xyz/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
+          </div>
+        </div>
+        <div class="project-card glass" tabindex="0">
+          <div class="project-thumb" style="background:linear-gradient(100deg,#fad0c4,#ffd1ff);"><span>Stay Focused</span></div>
+          <div class="project-info">
+            <p>Aplikacja do zarządzania czasem i koncentracją. JS, Service Worker, PWA.</p>
+            <a href="https://jacob22092.github.io/Stay-Focused/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
+          </div>
+        </div>
+        <div class="project-card glass" tabindex="0">
+          <div class="project-thumb" style="background:linear-gradient(100deg,#cfd9df,#e2ebf0);"><span>OCR App 2.0</span></div>
+          <div class="project-info">
+            <p>Rozpoznawanie tekstu z obrazu w przeglądarce. JS, Tesseract.js, UI/UX na mobile.</p>
+            <a href="https://jacob22092.github.io/OCR-App-2.0/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section section-glass fade-in">
+      <h2>Edukacja</h2>
+      <ul class="edu-list">
+        <li>
+          <strong>Wyższa Szkoła Kształcenia Zawodowego</strong> <span class="edu-meta">Cyberbezpieczeństwo, 2022–2027</span>
+        </li>
+        <li>
+          <strong>Technikum Teb Edukacja</strong> <span class="edu-meta">Informatyka, 2017–2021</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- WHY ME / SKILLS -->
+    <section id="whyme" class="section fade-in">
+      <h2>Kompetencje</h2>
+      <div class="unique-cards">
+        <div class="unique-card glass iconcard">
+          <span class="icn">⚡️</span>
+          <h3>Automatyzacja & Optymalizacja</h3>
+          <p>Wdrażam narzędzia i skrypty przyspieszające wsparcie IT oraz minimalizuję powtarzalność zgłoszeń.</p>
+        </div>
+        <div class="unique-card glass iconcard">
+          <span class="icn">🔒</span>
+          <h3>Bezpieczeństwo & Sieci</h3>
+          <p>Dbam o bezpieczeństwo infrastruktury, konfigurację uprawnień i nowoczesne rozwiązania sieciowe.</p>
+        </div>
+        <div class="unique-card glass iconcard">
+          <span class="icn">🤝</span>
+          <h3>Komunikacja & Współpraca</h3>
+          <p>Łączę umiejętności techniczne z partnerską komunikacją — szkolę, wspieram i dzielę się wiedzą.</p>
+        </div>
+        <div class="unique-card glass iconcard">
+          <span class="icn">🚀</span>
+          <h3>Innowacje & Rozwój</h3>
+          <p>Śledzę trendy IT, testuję nowe narzędzia i stale zwiększam swoje kompetencje praktyczne.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section fade-in">
+      <h2>Kontakt</h2>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/jakub-hyziak-a58193221/" target="_blank" rel="noopener" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"></a>
+        <a href="https://github.com/Jacob22092" target="_blank" rel="noopener" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></a>
+        <a href="https://x.com/JakubHyziak1" target="_blank" rel="noopener" title="X/Twitter"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+      </div>
+    </section>
+  </main>
+  <footer class="main-footer">
+    <p>&copy; 2025 Jakub Hyziak. Wykonano z pasją 💡</p>
+  </footer>
+  <script>
+    // Only desktop nav, so just smooth scroll
+    document.querySelectorAll('.main-nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if(href && href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+        }
+      });
+    });
+    // Theme toggle
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+    function setTheme(dark) {
+      if(dark) {
+        root.classList.add('dark');
+        localStorage.setItem('theme','dark');
+        themeBtn.querySelector('.theme-icon').textContent = "☀️";
+      } else {
+        root.classList.remove('dark');
+        localStorage.setItem('theme','light');
+        themeBtn.querySelector('.theme-icon').textContent = "🌙";
+      }
+    }
+    setTheme(localStorage.getItem('theme') === 'dark');
+    themeBtn.addEventListener('click', ()=> setTheme(!root.classList.contains('dark')));
+    // Reveal on scroll
+    function reveal() {
+      document.querySelectorAll('.fade-in').forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50) el.classList.add('visible');
+      });
+    }
+    reveal();
+    window.addEventListener('scroll', reveal);
+  </script>
 </body>
 </html>
