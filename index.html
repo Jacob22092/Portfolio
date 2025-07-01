@@ -143,7 +143,6 @@
     @media (max-width: 900px) {
       .main-nav { display: none !important; }
     }
-
     main {
       padding: 2.5rem 0.5rem 1.5rem 0.5rem;
       max-width: 1120px;
@@ -234,7 +233,6 @@
       opacity: 0.82;
       font-style: italic;
     }
-
     .stack-list {
       display: flex;
       flex-direction: column;
@@ -279,7 +277,7 @@
       .stack-pill { font-size:1em; width: auto;}
       .stack-desc { font-size: 0.97em;}
     }
-
+    /* Nowoczesne karty projektów */
     .projects-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -288,12 +286,15 @@
       justify-content: center;
       align-items: stretch;
     }
-    @media (min-width: 900px) {
+    @media (min-width: 700px) {
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1100px) {
       .projects-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
     .project-card {
-      border-radius: var(--radius);
-      background: var(--glass-bg-soft);
+      border-radius: 1.5rem;
+      background: rgba(35,38,59,0.99);
       box-shadow: 0 4px 24px #23263b44;
       display: flex;
       flex-direction: column;
@@ -301,30 +302,24 @@
       transition: transform 0.25s cubic-bezier(.2,.7,.3,1), box-shadow 0.3s;
       cursor: pointer;
       outline: none;
-      min-height: 280px;
+      min-height: 290px;
       overflow: hidden;
       position: relative;
     }
     .project-card:hover, .project-card:focus {
-      transform: scale(1.045) rotateZ(-1.3deg) translateY(-7px);
+      transform: scale(1.04) rotateZ(-1.3deg) translateY(-7px);
       box-shadow: 0 8px 36px #6366f1cc;
       z-index: 2;
     }
-    .project-thumb {
+    .repo-thumb {
       padding: 1.1rem 0.5rem 1rem 0.5rem;
+      min-height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 1.27rem;
-      color: #fff;
-      letter-spacing: 0.02em;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      min-height: 80px;
-      background: var(--brand);
-      box-shadow: 0 2px 14px #0002;
-      text-align: center;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      box-shadow: 0 2px 14px #6366f111;
     }
     .project-info {
       padding: 1.1rem 1rem 1.3rem 1rem;
@@ -339,7 +334,7 @@
       margin-top: 1.3rem;
       padding: 0.6rem 1.2rem;
       border-radius: 2em;
-      background: var(--brand);
+      background: var(--brand, #6366f1);
       color: #fff;
       border: none;
       font-weight: 600;
@@ -360,8 +355,7 @@
       transition: opacity 0.25s;
     }
     .btn-glow:hover:after, .btn-glow:focus:after { opacity:.8; }
-    .btn:hover, .btn:focus { background: #fff; color: var(--brand); outline: none;}
-
+    .btn:hover, .btn:focus { background: #fff; color: var(--brand, #6366f1); outline: none;}
     .edu-list {
       list-style: none;
       padding: 0;
@@ -389,7 +383,6 @@
       margin-left: 0.7em;
       font-weight: 400;
     }
-
     .unique-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -407,7 +400,7 @@
       .section, .section-glass { padding: 1.4rem 0.7rem; }
       .stack-list { gap: 0.8em;}
       .stack-row { flex-direction: column; align-items: flex-start; gap: 0.3em; }
-      .stack-pill { font-size:1em; width: auto;}
+      .stack-pill { font-size: 1em; width: auto;}
       .stack-desc { font-size: 0.97em;}
     }
     @media (max-width: 480px) {
@@ -495,7 +488,6 @@
     .contact-links a:hover img, .contact-links a:focus img {
       filter: invert(0%) sepia(100%) saturate(2200%) hue-rotate(230deg) brightness(1.3);
     }
-
     .main-footer {
       text-align: center;
       padding: 2.2rem 0 1.1rem 0;
@@ -508,8 +500,6 @@
       border-top-right-radius: var(--radius);
       box-shadow: 0 -2px 24px 0 #6366f155;
     }
-    .fade-in { opacity: 0; transform: translateY(48px); transition: opacity 1s, transform 1.3s cubic-bezier(.2,.7,.1,1);}
-    .fade-in.visible { opacity:1; transform: none; }
   </style>
 </head>
 <body>
@@ -522,7 +512,6 @@
         <h1 class="hero-title">Jakub Hyziak</h1>
         <div class="hero-subtitle">
           <span class="position">IT Help Desk Specialist</span>
-          
         </div>
       </div>
     </div>
@@ -536,7 +525,6 @@
       <a href="#contact">Kontakt</a>
     </nav>
   </header>
-
   <main>
     <!-- ABOUT -->
     <section id="about" class="section section-glass fade-in">
@@ -615,30 +603,11 @@
 
     <!-- PROJECTS -->
     <section id="projects" class="section fade-in">
-      <h2>Wybrane projekty</h2>
-      <div class="projects-grid">
-        <div class="project-card glass" tabindex="0">
-          <div class="project-thumb" style="background:linear-gradient(100deg,#a18cd1,#6366f1);"><span>Study Tools</span></div>
-          <div class="project-info">
-            <p>Platforma do zarządzania nauką i notatkami. React, Firebase, responsywny design.</p>
-            <a href="https://studytools.xyz/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
-          </div>
-        </div>
-        <div class="project-card glass" tabindex="0">
-          <div class="project-thumb" style="background:linear-gradient(100deg,#fad0c4,#6366f1);"><span>Stay Focused</span></div>
-          <div class="project-info">
-            <p>Aplikacja do zarządzania czasem i koncentracją. JS, Service Worker, PWA.</p>
-            <a href="https://jacob22092.github.io/Stay-Focused/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
-          </div>
-        </div>
-        <div class="project-card glass" tabindex="0">
-          <div class="project-thumb" style="background:linear-gradient(100deg,#cfd9df,#6366f1);"><span>OCR App 2.0</span></div>
-          <div class="project-info">
-            <p>Rozpoznawanie tekstu z obrazu w przeglądarce. JS, Tesseract.js, UI/UX na mobile.</p>
-            <a href="https://jacob22092.github.io/OCR-App-2.0/" target="_blank" rel="noopener" class="btn btn-glow">Zobacz projekt</a>
-          </div>
-        </div>
+      <h2>Ostatnie projekty</h2>
+      <div class="projects-grid" id="projects-grid">
+        <p style="color:#fff;text-align:center;">Ładuję projekty z GitHub...</p>
       </div>
+      <noscript style="color:#fff;">Włącz JavaScript, aby zobaczyć projekty.</noscript>
     </section>
 
     <!-- EDUCATION -->
@@ -695,7 +664,7 @@
     <p>&copy; 2025 Jakub Hyziak. Wykonano z pasją 💡</p>
   </footer>
   <script>
-    // Only desktop nav, so just smooth scroll
+    // Smooth scroll for navigation
     document.querySelectorAll('.main-nav a').forEach(link => {
       link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -714,8 +683,81 @@
     }
     reveal();
     window.addEventListener('scroll', reveal);
+
+    // ----------- OSTATNIE PROJEKTY z GitHub + pobieranie logo.png/screenshot.png/README ------------
+    async function getRepoImage(owner, repo) {
+      // Najpierw sprawdzamy logo.png lub screenshot.png
+      const files = ['logo.png', 'screenshot.png'];
+      for (const file of files) {
+        const imgUrl = `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/${file}`;
+        try {
+          const res = await fetch(imgUrl, {method: "HEAD"});
+          if (res.ok) return imgUrl;
+        } catch {}
+      }
+      // Jeśli nie ma powyższych, pobierz pierwszy obrazek z README.md (jeśli jest)
+      try {
+        const readmeUrl = `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/README.md`;
+        const res = await fetch(readmeUrl);
+        if (res.ok) {
+          const text = await res.text();
+          // Szukamy ![alt](url)
+          const match = text.match(/!\[[^\]]*\]\((.*?)\)/);
+          if (match && match[1]) {
+            let url = match[1].replace(/['"]/g, '');
+            // Jeśli url jest względny, zamień na pełny adres raw.githubusercontent
+            if (!/^https?:\/\//.test(url)) {
+              url = `https://raw.githubusercontent.com/${owner}/${repo}/HEAD/${url.replace(/^\.\//, '')}`;
+            }
+            return url;
+          }
+        }
+      } catch {}
+      return null;
+    }
+
+    function repoCard({repo, imgUrl}) {
+      return `
+        <div class="project-card glass" tabindex="0">
+          <div class="repo-thumb" style="${imgUrl ? "background:#fff;" : "background:linear-gradient(120deg,#6366f1,#a5b4fc);"}">
+            ${imgUrl ? `<img src="${imgUrl}" alt="Miniatura projektu ${repo.name}" style="max-width:90%;max-height:95px;border-radius:1.2em;box-shadow:0 4px 24px #6366f133;">`
+                      : `<span style="font-size:1.25em;font-weight:700;color:#fff;text-shadow:0 2px 18px #6366f1cc;">${repo.name}</span>`}
+          </div>
+          <div class="project-info">
+            <p style="color:#b1b6e3;">${repo.description ? repo.description : 'Brak opisu projektu.'}</p>
+            <a href="${repo.html_url}" target="_blank" rel="noopener" class="btn btn-glow">Zobacz na GitHub</a>
+          </div>
+        </div>
+      `;
+    }
+
+    (async function () {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = `<p style='color:#fff;text-align:center;'>Ładuję projekty z GitHub...</p>`;
+      try {
+        // Pobierz do 10 repo, bo część może być Jacob22092 i wyleci
+        const res = await fetch('https://api.github.com/users/Jacob22092/repos?sort=updated&per_page=10');
+        let repos = await res.json();
+        if (!Array.isArray(repos)) throw new Error("Brak odpowiedzi z GitHub API");
+        // Pomiń repozytorium Jacob22092 (README profile)
+        repos = repos.filter(r => r.name.toLowerCase() !== "jacob22092").slice(0, 3);
+        if (repos.length === 0) {
+          grid.innerHTML = `<p style='color:#fff;text-align:center;'>Brak projektów do wyświetlenia.</p>`;
+          return;
+        }
+        // Zrób karty projektów z miniaturkami
+        const cardPromises = repos.map(async repo => {
+          const imgUrl = await getRepoImage(repo.owner.login, repo.name);
+          return repoCard({repo, imgUrl});
+        });
+        const cardsHtml = await Promise.all(cardPromises);
+        grid.innerHTML = cardsHtml.join('');
+      } catch (e) {
+        grid.innerHTML = `<p style='color:#fff;text-align:center;'>Błąd ładowania projektów z GitHub.</p>`;
+      }
+    })();
   </script>
-<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
-<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="4CYlbUBD6aTYPB" async></script>
+  <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+  <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="4CYlbUBD6aTYPB" async></script>
 </body>
 </html>
