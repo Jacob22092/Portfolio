@@ -7,18 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHeaderScroll();
   setupMobileNav();
   setupScrollSpy();
-  setupGSAP();
-  setupTyped();
-  setupCounters();
-  // Removed skills bars (no % indicators)
-  setupConstellation();
-  setupTilt();
+  setupRevealIO();            // lekki reveal bez GSAP
+  setupTypedLazy();           // leniwe ładowanie Typed
+  setupConstellation();       // wyłączone na mobile/PRM
+  setupTiltLazy();            // leniwe ładowanie Tilt
+  setupIconifyLazy();         // leniwe ładowanie Iconify
   setupMagneticButtons();
   setupToTopFab();
   setupContactForm();
   setupSW();
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 });
+
+/* Helpers */
+function loadWhenIdle(src){
+  return new Promise((res, rej) => {
+    const load = () => {
+      const s = document.createElement('script');
+      s.src = src; s.defer = true; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 2000 });
+    else setTimeout(load, 800);
+  });
+}
 
 /* Motyw */
 function setupTheme(){
@@ -92,102 +104,63 @@ function setupScrollSpy(){
   const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   if (!sections.length) return;
 
-  if (window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-    links.forEach(l => l.classList.remove('active'));
-    sections.forEach(sec => {
-      ScrollTrigger.create({
-        trigger: sec,
-        start: 'top center',
-        end: 'bottom center',
-        onEnter: () => setActive(sec.id),
-        onEnterBack: () => setActive(sec.id)
-      });
-    });
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
-    sections.forEach(sec => io.observe(sec));
-  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
+  sections.forEach(sec => io.observe(sec));
 
   function setActive(id){
     links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
   }
 }
 
-/* GSAP animacje — lekkie */
-function setupGSAP(){
-  if (!window.gsap) return;
-  if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-
-  $$('.reveal-y').forEach((el) => {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 80%' },
-      opacity: 1, y: 0, duration: .6, ease: 'power2.out'
-    });
-  });
-  $$('.reveal-pop').forEach((el) => {
-    gsap.to(el, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      opacity: 1, scale: 1, duration: .5, ease: 'back.out(1.5)'
-    });
-  });
-
-  $$('h2.reveal-y').forEach((el) => {
-    window.ScrollTrigger && ScrollTrigger.create({
-      trigger: el,
-      start: 'top 85%',
-      onEnter: () => el.classList.add('revealed')
-    });
-  });
-
-  gsap.to('.blob.b1', { y: -16, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.blob.b2', { y: 16, duration: 7, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.blob.b3', { y: -12, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-}
-
-/* Typed */
-function setupTyped(){
-  const el = $('#typed');
-  if (!el || !window.Typed) return;
-  const strings = [
-    'IT Specialist',
-    'Windows Server / Active Directory',
-    'VMware & Proxmox',
-    'Office 365',
-    'Network Security',
-    'Automatyzacje: Python / Bash'
-  ];
-  new Typed('#typed', {
-    strings, typeSpeed: 32, backSpeed: 16, backDelay: 1100, loop: true, smartBackspace: true, showCursor: true, cursorChar: '▌'
-  });
-}
-
-/* Liczniki (zostawione na przyszłość — brak wskaźników w Tech) */
-function setupCounters(){
-  const nums = $$('.stat-num');
-  if (!nums.length) return;
+/* Reveal bez GSAP */
+function setupRevealIO(){
+  const els = [...$$('.reveal-y'), ...$$('.reveal-pop')];
+  if (!els.length) return;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { animateCount(e.target, Number(e.target.dataset.count)); io.unobserve(e.target); }
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        if (e.target.tagName === 'H2') e.target.classList.add('revealed');
+        io.unobserve(e.target);
+      }
     });
-  }, { threshold: 0.6 });
-  nums.forEach(n => io.observe(n));
-}
-function animateCount(el, to){
-  let n = 0; const step = Math.max(1, Math.floor(to / 36));
-  const t = setInterval(() => { n += step; if (n >= to) { n = to; clearInterval(t); } el.textContent = String(n); }, 22);
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+  els.forEach(el => io.observe(el));
 }
 
-/* Tilt */
-function setupTilt(){
-  if (!window.VanillaTilt) return;
+/* Typed.js — leniwie, tylko jeśli #typed istnieje */
+async function setupTypedLazy(){
+  const el = $('#typed');
+  if (!el) return;
+  try {
+    await loadWhenIdle('https://cdn.jsdelivr.net/npm/typed.js@2.0.12');
+    if (!window.Typed) return;
+    const strings = [
+      'IT Specialist','Windows Server / Active Directory','VMware & Proxmox',
+      'Office 365','Network Security','Automatyzacje: Python / Bash'
+    ];
+    new Typed('#typed', { strings, typeSpeed: 28, backSpeed: 16, backDelay: 1100, loop: true, smartBackspace: true, showCursor: true, cursorChar: '▌' });
+  } catch {}
+}
+
+/* Iconify — leniwie po bezczynności, tylko jeśli są ikony */
+async function setupIconifyLazy(){
+  if (!document.querySelector('.iconify')) return;
+  try { await loadWhenIdle('https://code.iconify.design/3/3.1.1/iconify.min.js'); } catch {}
+}
+
+/* Tilt — leniwie (desktop, brak PRM) */
+async function setupTiltLazy(){
+  const anyTilt = document.querySelector('[data-tilt]');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
-  VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
-    max: 6, speed: 400, glare: false, scale: 1.01
-  });
+  const isTouch = matchMedia('(pointer:coarse)').matches;
+  if (!anyTilt || reduce || isTouch) return;
+  try {
+    await loadWhenIdle('https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js');
+    if (window.VanillaTilt) window.VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { max: 6, speed: 400, glare: false, scale: 1.01 });
+  } catch {}
 }
 
 /* Magnetic buttons (desktop only) */
@@ -210,14 +183,12 @@ function setupMagneticButtons(){
 function setupToTopFab(){
   const btn = $('#toTopFab');
   if (!btn) return;
-
   const onScroll = () => {
     if (window.scrollY > 140) btn.classList.add('show');
     else btn.classList.remove('show');
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -239,11 +210,8 @@ function setupContactForm(){
       const input = label.querySelector('input, textarea');
       const err = label.querySelector('.error');
       if (!input.checkValidity()){
-        ok = false;
-        err.textContent = input.validationMessage;
-      } else {
-        err.textContent = '';
-      }
+        ok = false; err.textContent = input.validationMessage;
+      } else { err.textContent = ''; }
     });
     return ok;
   }
@@ -261,31 +229,39 @@ function setupContactForm(){
   });
 }
 
-/* Konstelacja */
+/* Konstelacja — off na mobile/PRM; ~28 FPS desktop */
 function setupConstellation(){
   const canvas = document.getElementById('constellation');
   if (!canvas) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isSmall = window.innerWidth < 992;
+  if (reduce || isSmall) { canvas.remove(); return; }
+
   const ctx = canvas.getContext('2d');
-  const DPR = window.devicePixelRatio || 1;
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
   function resize(){
     canvas.width = canvas.clientWidth * DPR;
     canvas.height = canvas.clientHeight * DPR;
   }
-  resize(); window.addEventListener('resize', resize);
+  resize(); window.addEventListener('resize', resize, { passive: true });
 
-  const isSmall = window.innerWidth < 800;
-  const COUNT = reduce ? 0 : (isSmall ? 42 : 68);
+  const COUNT = 60;
   const ps = Array.from({ length: COUNT }, () => ({
     x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - .5) * .22 * DPR,
-    vy: (Math.random() - .5) * .22 * DPR,
+    y: Math.random() * canvas.clientHeight,
+    vx: (Math.random() - .5) * .18 * DPR,
+    vy: (Math.random() - .5) * .18 * DPR,
     r: Math.random() * 2 * DPR
   }));
 
-  function step(){
+  const FRAME_MS = 1000 / 28;
+  let last = 0;
+
+  function step(ts){
+    if (ts - last < FRAME_MS) { requestAnimationFrame(step); return; }
+    last = ts;
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
     for (let i=0;i<COUNT;i++){
       for (let j=i+1;j<COUNT;j++){
@@ -295,7 +271,7 @@ function setupConstellation(){
         const max = (140*DPR)*(140*DPR);
         if (d2 < max) {
           const alpha = 1 - d2 / max;
-          ctx.strokeStyle = `rgba(96,165,250,${alpha * .22})`;
+          ctx.strokeStyle = `rgba(96,165,250,${alpha * .18})`;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
@@ -309,7 +285,7 @@ function setupConstellation(){
     });
     requestAnimationFrame(step);
   }
-  step();
+  requestAnimationFrame(step);
 }
 
 /* Service Worker */
