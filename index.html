@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a" />
-  <title>Jakub Hyziak - IT Specialist</title>
+  <title>Jakub Hyziak — IT Specialist | Portfolio</title>
   <meta name="description" content="Portfolio Jakuba Hyziaka — IT Specialist. Administracja Windows Server/AD, VMware/Proxmox, O365, automatyzacje (Python/Bash), bezpieczeństwo sieci. Projekty, doświadczenie, kontakt." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="author" content="Jakub Hyziak" />
@@ -28,12 +28,11 @@
 
   <!-- Performance -->
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
-  <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://code.iconify.design" crossorigin>
   <link rel="dns-prefetch" href="//images.unsplash.com">
   <link rel="icon" href="favicon.png" />
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/IMG_1339.JPG" imagesizes="240px" />
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/IMG_1339.JPG" imagesizes="240px" fetchpriority="high" />
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -54,55 +53,21 @@
       "https://www.linkedin.com/in/jakub-hyziak-a58193221/",
       "https://x.com/JakubHyziak1"
     ],
-    "knowsAbout":[
-      "Windows Server","Active Directory","VMware","Proxmox","Office 365","Python","Bash","Git","Network Security","Service Desk"
-    ]
+    "knowsAbout":["Windows Server","Active Directory","VMware","Proxmox","Office 365","Python","Bash","Git","Network Security","Service Desk"]
   }
   </script>
 
-  <!-- Schema.org WebSite (SearchAction) -->
+  <!-- Schema.org WebSite -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "url":"https://jhyziak.eu/",
-    "name":"Jakub Hyziak — IT Specialist",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://jhyziak.eu/?q={q}",
-      "query-input":"required name=q"
-    }
-  }
+  {"@context":"https://schema.org","@type":"WebSite","url":"https://jhyziak.eu/","name":"Jakub Hyziak — IT Specialist","potentialAction":{"@type":"SearchAction","target":"https://jhyziak.eu/?q={q}","query-input":"required name=q"}}
   </script>
 
-  <!-- Schema.org SoftwareApplication (UptimeKIM) -->
+  <!-- SoftwareApplication (UptimeKIM, IMEI Save) -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "applicationCategory":"WebApplication",
-    "name":"UptimeKIM — Panel Monitoringu Połączeń z Centralą",
-    "operatingSystem":"Any",
-    "url":"https://jhyziak.eu/",
-    "image":"https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/upss.png",
-    "description":"Aplikacja webowa do monitorowania statusu stacji roboczych i połączeń z centralą: uptime, alerty, filtrowanie, sortowanie, CRUD metadanych, autoryzacja JWT.",
-    "author": { "@type":"Person", "name":"Jakub Hyziak" }
-  }
+  {"@context":"https://schema.org","@type":"SoftwareApplication","applicationCategory":"WebApplication","name":"UptimeKIM — Panel Monitoringu Połączeń z Centralą","operatingSystem":"Any","url":"https://jhyziak.eu/","image":"https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/upss.png","description":"Aplikacja webowa do monitorowania statusu stacji roboczych i połączeń z centralą: uptime, alerty, filtrowanie, sortowanie, CRUD metadanych, autoryzacja JWT.","author":{"@type":"Person","name":"Jakub Hyziak"}}
   </script>
-
-  <!-- Schema.org SoftwareApplication (IMEI Save) -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "applicationCategory":"DesktopApplication",
-    "name":"IMEI Save — Automatyczny zapis kodów IMEI",
-    "operatingSystem":"Windows",
-    "url":"https://jhyziak.eu/",
-    "image":"https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/ss2.png",
-    "description":"Program dla Windows zapisujący kody IMEI skanowane czytnikiem: autowykrywanie skanera, statystyki, GUI z zakładkami, tray, autostart, szybkie operacje na pliku IMEI.",
-    "author": { "@type":"Person", "name":"Jakub Hyziak" }
-  }
+  {"@context":"https://schema.org","@type":"SoftwareApplication","applicationCategory":"DesktopApplication","name":"IMEI Save — Automatyczny zapis kodów IMEI","operatingSystem":"Windows","url":"https://jhyziak.eu/","image":"https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/ss2.png","description":"Program dla Windows zapisujący kody IMEI skanowane czytnikiem: autowykrywanie skanera, statystyki, GUI z zakładkami, tray, autostart, szybkie operacje na pliku IMEI.","author":{"@type":"Person","name":"Jakub Hyziak"}}
   </script>
 </head>
 <body>
@@ -167,7 +132,7 @@
 
       <div class="container hero-inner">
         <div class="hero-media">
-          <img class="avatar" src="https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/IMG_1339.JPG" width="240" height="240" alt="Jakub Hyziak — zdjęcie profilowe" decoding="async" />
+          <img class="avatar" src="https://raw.githubusercontent.com/Jacob22092/Portfolio/refs/heads/main/IMG_1339.JPG" width="240" height="240" alt="Jakub Hyziak — zdjęcie profilowe" decoding="async" fetchpriority="high" />
         </div>
         <div class="hero-content">
           <h1 class="reveal-y">Buduję stabilne środowiska IT i automatyzuję procesy</h1>
@@ -180,8 +145,8 @@
             <span id="typed"></span>
           </p>
           <div class="hero-cta reveal-y delay-3">
-            <a class="btn primary" href="#projekty" aria-label="Zobacz projekty"><span class="iconify" data-icon="solar:eye-bold-duotone" aria-hidden="true"></span> Zobacz projekty</a>
-            <a class="btn outline" href="#doswiadczenie" aria-label="Zobacz doświadczenie"><span class="iconify" data-icon="solar:case-round-bold-duotone" aria-hidden="true"></span> Doświadczenie</a>
+            <a class="btn primary" href="#projekty"><span class="iconify" data-icon="solar:eye-bold-duotone" aria-hidden="true"></span> Zobacz projekty</a>
+            <a class="btn outline" href="#doswiadczenie"><span class="iconify" data-icon="solar:case-round-bold-duotone" aria-hidden="true"></span> Doświadczenie</a>
           </div>
           <ul class="chips reveal-y delay-4" aria-label="Specjalizacje">
             <li><span class="iconify" data-icon="logos:microsoft-windows" aria-hidden="true"></span> Windows Server / AD</li>
@@ -240,7 +205,7 @@
             </div>
             <div class="exp-content">
               <div class="exp-head">
-                <span class="exp-time chip solid"><span class="iconify" data-icon="solar:calendar-bold-duotone" aria-hidden="true"></span> paź 2025 — obecnie</span>
+                <span class="exp-time chip solid"><span class="iconify" data-icon="solar:calendar-bold-duotone" aria-hidden="true"></span> 2025 — obecnie</span>
                 <h3>IT Specialist — KiM Group</h3>
                 <div class="chips-row">
                   <span class="chip"><span class="iconify" data-icon="solar:shield-check-bold-duotone" aria-hidden="true"></span> Security</span>
@@ -262,8 +227,8 @@
             </div>
             <div class="exp-content">
               <div class="exp-head">
-                <span class="exp-time chip solid"><span class="iconify" data-icon="solar:calendar-bold-duotone" aria-hidden="true"></span> paź 2024 — paź 2025</span>
-                <h3>IT Help Desk — KiM Group</h3>
+                <span class="exp-time chip solid"><span class="iconify" data-icon="solar:calendar-bold-duotone" aria-hidden="true"></span> paź 2024 — 2025</span>
+                <h3>IT Help Desk Specialist — KiM Group</h3>
                 <div class="chips-row">
                   <span class="chip">RDP/VPS</span><span class="chip">Automatyzacja</span>
                 </div>
@@ -505,12 +470,7 @@
     </div>
   </footer>
 
-  <!-- Biblioteki -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
-  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js" defer></script>
+  <!-- Biblioteki ładujemy leniwie w main.js (nie dodajemy tutaj) -->
 
   <!-- App -->
   <script defer src="main.js"></script>
