@@ -195,7 +195,7 @@ function setupToTopFab(){
   });
 }
 
-/* Formularz */
+/* Formularz -> Formspree */
 function setupContactForm(){
   const form = $('#contactForm');
   const status = $('#formStatus');
@@ -204,28 +204,52 @@ function setupContactForm(){
 
   function validate(){
     let ok = true;
-    const hp = form.querySelector('input[name="website"]');
-    if (hp && hp.value.trim() !== '') return false; // bot
+    // Honeypots (_gotcha dla Formspree + własny 'website')
+    const hp1 = form.querySelector('input[name="website"]');
+    const hp2 = form.querySelector('input[name="_gotcha"]');
+    if ((hp1 && hp1.value.trim() !== '') || (hp2 && hp2.value.trim() !== '')) return false; // bot
     form.querySelectorAll('label').forEach(label => {
       const input = label.querySelector('input, textarea');
       const err = label.querySelector('.error');
       if (!input.checkValidity()){
-        ok = false; err.textContent = input.validationMessage;
-      } else { err.textContent = ''; }
+        ok = false; if (err) err.textContent = input.validationMessage;
+      } else { if (err) err.textContent = ''; }
     });
     return ok;
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!validate()) return;
     if (status) status.textContent = 'Wysyłanie...';
     if (btn) { btn.disabled = true; btn.setAttribute('aria-disabled', 'true'); }
-    setTimeout(() => {
-      if (status) status.textContent = 'Dziękuję! Wiadomość została wysłana.';
-      if (btn) { setTimeout(()=>{ btn.disabled = false; btn.removeAttribute('aria-disabled'); }, 5000); }
-      form.reset();
-    }, 800);
+
+    try {
+      const data = new FormData(form);
+      const resp = await fetch(form.action || 'https://formspree.io/f/xqaygbbl', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (resp.ok) {
+        if (status) status.textContent = 'Dziękuję! Wiadomość została wysłana.';
+        form.reset();
+      } else {
+        let msg = 'Wystąpił problem z wysyłką. Spróbuj ponownie.';
+        try {
+          const payload = await resp.json();
+          if (payload && payload.errors) {
+            msg = payload.errors.map(e => e.message).join(', ');
+          }
+        } catch {}
+        if (status) status.textContent = msg;
+      }
+    } catch (err) {
+      if (status) status.textContent = 'Brak połączenia. Spróbuj ponownie.';
+    } finally {
+      if (btn) { setTimeout(()=>{ btn.disabled = false; btn.removeAttribute('aria-disabled'); }, 1200); }
+    }
   });
 }
 
