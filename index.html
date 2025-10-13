@@ -432,8 +432,14 @@
       <div class="container">
         <h2 class="reveal-y">Kontakt</h2>
         <p class="reveal-y">Chętnie porozmawiam o współpracy lub pomogę w wyzwaniach IT.</p>
-        <form id="contactForm" class="contact-form reveal-y" novalidate>
+        <form id="contactForm" class="contact-form reveal-y" action="https://formspree.io/f/xqaygbbl" method="POST" novalidate>
+          <!-- Honeypots -->
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <!-- Meta -->
+          <input type="hidden" name="_subject" value="Nowa wiadomość z portfolio (jhyziak.eu)">
+          <!-- (opcjonalnie) przekierowanie po sukcesie:
+          <input type="hidden" name="_redirect" value="https://jhyziak.eu/dziekujemy.html"> -->
           <label>
             Imię
             <input type="text" name="name" placeholder="Twoje imię" required />
@@ -474,11 +480,3 @@
   <script defer src="main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
